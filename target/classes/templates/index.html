@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<head>
+    <th:block th:replace="~{fragments/common :: resources}"></th:block>
+    <title>TheSimpleSide News - Follow the World's Smartest Investors</title>
+    <th:block layout:fragment="head"></th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+        <!-- Hero Section -->
+        <div class="position-relative overflow-hidden bg-light">
+            <div class="position-absolute w-100 h-100 bg-success bg-opacity-10"></div>
+            
+            <div class="container py-5">
+                <div class="row align-items-center py-5">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold mb-4">
+                            Follow the
+                            <span class="text-success">World's Smartest Investors</span>
+                        </h1>
+                        <p class="lead mb-4">
+                            Track real-time trades from politicians, corporate insiders, and legendary investors. Get instant alerts and gain an edge in the market.
+                        </p>
+                        <div class="d-flex gap-3">
+                            <a href="/register" class="btn btn-success btn-lg">
+                                Get started
+                            </a>
+                            <a href="/about" class="btn btn-link btn-lg text-dark text-decoration-none">
+                                Learn more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div th:replace="~{fragments/features :: features}"></div>
+
+        <!-- More sections will be added here -->
+    </div>
+
+    <th:block th:replace="~{fragments/common :: scripts}"></th:block>
+    <th:block layout:fragment="scripts"></th:block>
+</body>
+</html> 

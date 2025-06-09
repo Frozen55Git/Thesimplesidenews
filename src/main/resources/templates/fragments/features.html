@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/common :: resources}"></th:block>
+</head>
+<body>
+    <div th:fragment="features" class="bg-light py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="text-success fw-semibold">Advanced Features</span>
+                <h2 class="display-5 fw-bold mt-2">
+                    Everything you need to track smart money
+                </h2>
+                <p class="lead text-muted mt-3">
+                    Get real-time insights into the trading activities of politicians, corporate insiders, and legendary investors.
+                </p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Real-time Alerts -->
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <svg class="text-success me-2" width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                            </svg>
+                            <h3 class="h5 mb-0">Real-time Alerts</h3>
+                        </div>
+                        <p class="text-muted mb-4">
+                            Get instant notifications when influential investors make significant moves in the market.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="#" class="text-success text-decoration-none">
+                                Learn more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Analytics -->
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <svg class="text-success me-2" width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
+                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+                            </svg>
+                            <h3 class="h5 mb-0">Advanced Analytics</h3>
+                        </div>
+                        <p class="text-muted mb-4">
+                            Deep dive into trading patterns, portfolio analysis, and market sentiment indicators.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="#" class="text-success text-decoration-none">
+                                Learn more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Tracking -->
+                <div class="col-lg-4">
+                    <div class="d-flex flex-column h-100">
+                        <div class="d-flex align-items-center mb-3">
+                            <svg class="text-success me-2" width="24" height="24" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                            </svg>
+                            <h3 class="h5 mb-0">Portfolio Tracking</h3>
+                        </div>
+                        <p class="text-muted mb-4">
+                            Track and analyze your portfolio performance alongside top investors' strategies.
+                        </p>
+                        <div class="mt-auto">
+                            <a href="#" class="text-success text-decoration-none">
+                                Learn more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:replace="~{fragments/common :: scripts}"></th:block>
+</body>
+</html>

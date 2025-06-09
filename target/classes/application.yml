@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/thesimpleside_news
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET_KEY:your-256-bit-secret-key-here}
+      expiration: 86400000 # 24 hours in milliseconds
+  web:
+    resources:
+      static-locations: classpath:/static/,classpath:/public/,classpath:/resources/,classpath:/META-INF/resources/
+      chain:
+        strategy:
+          content:
+            enabled: true
+            paths: /**
+  mvc:
+    static-path-pattern: /**
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+
+logging:
+  level:
+    org.springframework.security: INFO
+    com.thesimpleside: DEBUG
+    org.springframework.web: DEBUG 
