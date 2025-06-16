@@ -44,3 +44,32 @@
         transform: translateX(0);
     }
 }
+.highlight-green {
+    color: #2b8f3d;
+}
+.highlight-blue {
+    color: #2c6dd6;
+}
+.search-bar input {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+.search-bar button {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+.premium-card {
+    background-color: #0e1628;
+    color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    max-width: 400px;
+}
+.confidence-bar {
+    background-color: #28a745;
+    height: 8px;
+    width: 87%;
+    border-radius: 5px;
+}
+.scroll-hint {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
