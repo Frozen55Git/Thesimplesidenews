@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<head>
+    <th:block th:replace="~{fragments/common :: resources}"></th:block>
+    <title>Dashboard - InsiderEdge</title>
+    <th:block layout:fragment="head"></th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <span class="bg-success text-white rounded-2 px-2 py-1 fw-bold me-2" style="font-size: 1.25rem;">IE</span>
+                    <div>
+                        <span class="fw-bold fs-5">InsiderEdge</span>
+                        <div class="small text-muted" style="margin-top: -4px;">Powered by The Simple Side</div>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#">Screener</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning fw-semibold" href="#">
+                                <span class="me-1" style="font-size: 1rem;">✨</span>Conviction Trades
+                                <span class="ms-1" style="color: #ffc107; font-size: 0.75rem;">●</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle me-1"></i>
+                                <span th:text="${user.firstName}">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/profile"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container-fluid py-4">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3 col-lg-2">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h6 class="card-title fw-bold mb-3">Navigation</h6>
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="/dashboard">
+                                        <i class="bi bi-house me-2"></i>Dashboard
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="bi bi-graph-up me-2"></i>Portfolio
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="bi bi-bell me-2"></i>Alerts
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="bi bi-newspaper me-2"></i>News
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="bi bi-search me-2"></i>Screener
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <i class="bi bi-gear me-2"></i>Settings
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Content -->
+                <div class="col-md-9 col-lg-10">
+                    <!-- Welcome Section -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="card-title">Welcome back, <span th:text="${user.firstName}">User</span>!</h4>
+                                    <p class="card-text text-muted">Here's what's happening with your portfolio and the markets today.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="row mb-4">
+                        <div class="col-md-3 mb-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-success bg-opacity-10 rounded p-2 me-3">
+                                            <i class="bi bi-graph-up text-success fs-4"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="card-title mb-1">Portfolio Value</h6>
+                                            <h4 class="mb-0">$125,430</h4>
+                                            <small class="text-success">+2.5% today</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-warning bg-opacity-10 rounded p-2 me-3">
+                                            <i class="bi bi-bell text-warning fs-4"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="card-title mb-1">Active Alerts</h6>
+                                            <h4 class="mb-0">12</h4>
+                                            <small class="text-warning">3 new today</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-info bg-opacity-10 rounded p-2 me-3">
+                                            <i class="bi bi-newspaper text-info fs-4"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="card-title mb-1">News Items</h6>
+                                            <h4 class="mb-0">47</h4>
+                                            <small class="text-info">8 unread</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary bg-opacity-10 rounded p-2 me-3">
+                                            <i class="bi bi-people text-primary fs-4"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="card-title mb-1">Tracked Insiders</h6>
+                                            <h4 class="mb-0">156</h4>
+                                            <small class="text-primary">5 new trades</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity and News -->
+                    <div class="row">
+                        <div class="col-lg-8 mb-4">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white border-0">
+                                    <h5 class="card-title mb-0">Recent Insider Trades</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item border-0 px-0">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">Senator John Smith</h6>
+                                                    <p class="mb-1 text-muted">Bought 1,000 shares of AAPL</p>
+                                                    <small class="text-muted">2 hours ago</small>
+                                                </div>
+                                                <span class="badge bg-success">Buy</span>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item border-0 px-0">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">CEO Jane Doe</h6>
+                                                    <p class="mb-1 text-muted">Sold 500 shares of TSLA</p>
+                                                    <small class="text-muted">4 hours ago</small>
+                                                </div>
+                                                <span class="badge bg-danger">Sell</span>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item border-0 px-0">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h6 class="mb-1">CFO Mike Johnson</h6>
+                                                    <p class="mb-1 text-muted">Bought 2,000 shares of MSFT</p>
+                                                    <small class="text-muted">6 hours ago</small>
+                                                </div>
+                                                <span class="badge bg-success">Buy</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-header bg-white border-0">
+                                    <h5 class="card-title mb-0">Latest News</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item border-0 px-0">
+                                            <h6 class="mb-1">Apple Reports Strong Q4 Earnings</h6>
+                                            <p class="mb-1 text-muted small">Apple Inc. reported better-than-expected quarterly results...</p>
+                                            <small class="text-muted">1 hour ago</small>
+                                        </div>
+                                        <div class="list-group-item border-0 px-0">
+                                            <h6 class="mb-1">Tesla Announces New Model</h6>
+                                            <p class="mb-1 text-muted small">Tesla unveiled its latest electric vehicle model...</p>
+                                            <small class="text-muted">3 hours ago</small>
+                                        </div>
+                                        <div class="list-group-item border-0 px-0">
+                                            <h6 class="mb-1">Microsoft Cloud Revenue Soars</h6>
+                                            <p class="mb-1 text-muted small">Microsoft's cloud computing division shows strong growth...</p>
+                                            <small class="text-muted">5 hours ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="~{fragments/common :: scripts}"></th:block>
+    <th:block layout:fragment="scripts"></th:block>
+</body>
+</html> 

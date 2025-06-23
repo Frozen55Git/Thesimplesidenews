@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main}">
+<head>
+    <th:block th:replace="~{fragments/common :: resources}"></th:block>
+    <title>Profile - InsiderEdge</title>
+    <th:block layout:fragment="head"></th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <span class="bg-success text-white rounded-2 px-2 py-1 fw-bold me-2" style="font-size: 1.25rem;">IE</span>
+                    <div>
+                        <span class="fw-bold fs-5">InsiderEdge</span>
+                        <div class="small text-muted" style="margin-top: -4px;">Powered by The Simple Side</div>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="#">Screener</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning fw-semibold" href="#">
+                                <span class="me-1" style="font-size: 1rem;">✨</span>Conviction Trades
+                                <span class="ms-1" style="color: #ffc107; font-size: 0.75rem;">●</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-circle me-1"></i>
+                                <span th:text="${userProfile.firstName}">User</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="/profile"><i class="bi bi-person me-2"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/logout"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <!-- Profile Header -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                    <i class="bi bi-person text-success fs-1"></i>
+                                </div>
+                            </div>
+                            <h4 class="card-title" th:text="${userProfile.firstName + ' ' + userProfile.lastName}">User Name</h4>
+                            <p class="text-muted" th:text="${userProfile.email}">user@example.com</p>
+                            <span class="badge bg-success" th:text="${userProfile.role}">USER</span>
+                        </div>
+                    </div>
+
+                    <!-- Profile Information -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-0">
+                            <h5 class="card-title mb-0">Profile Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">First Name</label>
+                                    <p class="form-control-plaintext" th:text="${userProfile.firstName}">John</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Last Name</label>
+                                    <p class="form-control-plaintext" th:text="${userProfile.lastName}">Doe</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Email Address</label>
+                                    <p class="form-control-plaintext" th:text="${userProfile.email}">john.doe@example.com</p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Account Status</label>
+                                    <p class="form-control-plaintext">
+                                        <span th:if="${userProfile.enabled}" class="badge bg-success">Active</span>
+                                        <span th:unless="${userProfile.enabled}" class="badge bg-danger">Inactive</span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Role</label>
+                                    <p class="form-control-plaintext">
+                                        <span class="badge bg-primary" th:text="${userProfile.role}">USER</span>
+                                    </p>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label fw-bold">Member Since</label>
+                                    <p class="form-control-plaintext" th:text="${#temporals.format(userProfile.createdAt, 'MMM dd, yyyy')}">Jan 01, 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Actions -->
+                    <div class="card border-0 shadow-sm mt-4">
+                        <div class="card-header bg-white border-0">
+                            <h5 class="card-title mb-0">Account Actions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <a href="#" class="btn btn-outline-primary w-100">
+                                        <i class="bi bi-pencil me-2"></i>Edit Profile
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <a href="#" class="btn btn-outline-warning w-100">
+                                        <i class="bi bi-key me-2"></i>Change Password
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <a href="#" class="btn btn-outline-info w-100">
+                                        <i class="bi bi-bell me-2"></i>Notification Settings
+                                    </a>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <a href="#" class="btn btn-outline-secondary w-100">
+                                        <i class="bi bi-shield me-2"></i>Privacy Settings
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Subscription Information -->
+                    <div class="card border-0 shadow-sm mt-4">
+                        <div class="card-header bg-white border-0">
+                            <h5 class="card-title mb-0">Subscription Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h6 class="mb-1" th:text="${userProfile.role == 'PREMIUM_USER' ? 'Premium Plan' : userProfile.role == 'ADMIN' ? 'Admin Access' : 'Free Plan'}">Free Plan</h6>
+                                    <p class="text-muted mb-0" th:text="${userProfile.role == 'PREMIUM_USER' ? 'Full access to all features including advanced analytics and priority support' : userProfile.role == 'ADMIN' ? 'Administrative access with full system control' : 'Basic access to core features'}">Basic access to core features</p>
+                                </div>
+                                <div class="col-md-4 text-md-end">
+                                    <a href="#" class="btn btn-success" th:if="${userProfile.role == 'USER'}">
+                                        <i class="bi bi-star me-2"></i>Upgrade to Premium
+                                    </a>
+                                    <span class="badge bg-success" th:if="${userProfile.role == 'PREMIUM_USER'}">Active</span>
+                                    <span class="badge bg-primary" th:if="${userProfile.role == 'ADMIN'}">Admin</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="~{fragments/common :: scripts}"></th:block>
+    <th:block layout:fragment="scripts"></th:block>
+</body>
+</html> 

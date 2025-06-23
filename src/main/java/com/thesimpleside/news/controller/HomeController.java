@@ -11,13 +11,13 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/login")
-    public String login() {
-        return "auth/login";
+    @GetMapping("/home")
+    public String homePage() {
+        return "index";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "auth/register";
+    @GetMapping("/about")
+    public String about() {
+        return "about";
     }
 } 
