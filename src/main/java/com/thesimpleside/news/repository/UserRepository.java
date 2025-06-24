@@ -37,4 +37,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
     @Query("SELECT u FROM User u WHERE u.enabled = true")
     java.util.List<User> findEnabledUsers();
+
+    // Add this method for password reset
+    Optional<User> findByResetPasswordToken(String resetPasswordToken);
 } 
